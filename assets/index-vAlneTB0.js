@@ -2673,16 +2673,16 @@ ${c.vertexSource}`,this.forceManualRenderingForInstanceIDShaders&&(z=z.replaceAl
       the chances of reaching a peaceful outcome. Drawing on newly available geospatial
       data, the study finds that location plays a meaningful role in shaping mediation
       success.</p> <h2 class="svelte-1qhwf62">The Paradox of Distance: Agreements vs. De-escalation</h2> <p>The research highlights a fascinating duality in mediation success:</p> <ol><li class="svelte-1qhwf62"><strong>Distant Mediation Fosters Agreements</strong>: The study finds
-        blaaaaaaaa that the further a mediation event is from a conflict area,
-        the higher the likelihood of a formal peace agreement being signed. This
-        suggests that a greater geographical distance can confer perceived
-        neutrality, reduce immediate local political pressures, and allow
-        parties to negotiate without the intense emotional and security concerns
-        that often plague discussions held closer to the conflict. The data
-        indicates that for every additional “far away” mediation event, the odds
-        of a peace agreement being signed increase by approximately 14.2%. This
-        underscores the strategic value of neutral ground when aiming for formal
-        settlements.</li></ol></div> <div id="buttons" class="svelte-1qhwf62"><button>Afghanistan</button> <button>Israel</button> <button>Libya</button> <button>Sudan</button> <button>Syria</button> <button>Yemen</button></div> <div class="map-wrapper svelte-1qhwf62"><!> <div id="map" class="svelte-1qhwf62"></div></div> <div id="legend" class="svelte-1qhwf62"><svg width="200px" height="70px"><text x="0" y="10" fill="white" font-size="10">Number of Peace Agreements</text><circle cx="20" cy="50" r="5" fill="#FF5722" fill-opacity="0.2" stroke="white"></circle><line x1="20" y1="45" x2="70" y2="45" stroke="white" stroke-dasharray="4,2"></line><text x="75" y="45" fill="white" font-size="10" alignment-baseline="middle">5</text><circle cx="20" cy="45" r="10" fill="#FF5722" fill-opacity="0.2" stroke="white"></circle><line x1="20" y1="35" x2="70" y2="35" stroke="white" stroke-dasharray="4,2"></line><text x="75" y="35" fill="white" font-size="10" alignment-baseline="middle">10</text><circle cx="20" cy="40" r="15" fill="#FF5722" fill-opacity="0.2" stroke="white"></circle><line x1="20" y1="25" x2="70" y2="25" stroke="white" stroke-dasharray="4,2"></line><text x="75" y="25" fill="white" font-size="10" alignment-baseline="middle">20</text></svg></div> <div class="blog_text svelte-1qhwf62"><ol start="2"><li class="svelte-1qhwf62"><strong>Closer Proximity Reduces Violence</strong>: Conversely, the
+        that the further a mediation event is from a conflict area, the higher
+        the likelihood of a formal peace agreement being signed. This suggests
+        that a greater geographical distance can confer perceived neutrality,
+        reduce immediate local political pressures, and allow parties to
+        negotiate without the intense emotional and security concerns that often
+        plague discussions held closer to the conflict. The data indicates that
+        for every additional “far away” mediation event, the odds of a peace
+        agreement being signed increase by approximately 14.2%. This underscores
+        the strategic value of neutral ground when aiming for formal
+        settlements.</li></ol></div> <div id="buttons" class="svelte-1qhwf62"><button>Afghanistan</button> <button>Israel</button> <button>Libya</button> <button>Sudan</button> <button>Syria</button> <button>Yemen</button></div> <div class="map-wrapper svelte-1qhwf62"><!> <div id="map" class="svelte-1qhwf62"></div></div> <div id="legend" class="svelte-1qhwf62"><svg width="400px" height="75px"><text x="0" y="10" fill="white" font-size="10">Number of Peace Agreements</text><circle cx="20" cy="50" r="5" fill="#FF5722" fill-opacity="0.2" stroke="white"></circle><line x1="20" y1="45" x2="70" y2="45" stroke="white" stroke-dasharray="4,2"></line><text x="75" y="45" fill="white" font-size="10" alignment-baseline="middle">5</text><circle cx="20" cy="45" r="10" fill="#FF5722" fill-opacity="0.2" stroke="white"></circle><line x1="20" y1="35" x2="70" y2="35" stroke="white" stroke-dasharray="4,2"></line><text x="75" y="35" fill="white" font-size="10" alignment-baseline="middle">10</text><circle cx="20" cy="40" r="15" fill="#FF5722" fill-opacity="0.2" stroke="white"></circle><line x1="20" y1="25" x2="70" y2="25" stroke="white" stroke-dasharray="4,2"></line><text x="75" y="25" fill="white" font-size="10" alignment-baseline="middle">20</text><text x="200" y="10" fill="white" font-size="10">Distance from conflict</text><line x1="250" y1="40" x2="300" y2="40" stroke="white" stroke-dasharray="4,2"></line><text x="305" y="43" fill="white" font-size="10">1,500km</text><circle cx="250" cy="50" r="25" fill="steelblue" fill-opacity="0.2" stroke="none"></circle><line x1="250" y1="25" x2="300" y2="25" stroke="white" stroke-dasharray="4,2"></line><text x="305" y="28" fill="white" font-size="10">5,000km</text><circle cx="250" cy="50" r="10" fill="steelblue" fill-opacity="0.2" stroke="none"></circle></svg></div> <div class="blog_text svelte-1qhwf62"><ol start="2"><li class="svelte-1qhwf62"><strong>Closer Proximity Reduces Violence</strong>: Conversely, the
         research demonstrates that closer proximity between a mediation event
         and the conflict zone is directly linked to a greater reduction in
         violent events and fatalities. This is because localized mediation can
@@ -2712,9 +2712,9 @@ ${c.vertexSource}`,this.forceManualRenderingForInstanceIDShaders&&(z=z.replaceAl
       central to building effective and sustainable peace. By strategically
       considering where we mediate, we can significantly enhance our collective
       ability to resolve conflicts and mitigate human suffering.</p> <h2 class="svelte-1qhwf62">Sources</h2> <ul><li class="svelte-1qhwf62">data on mediation events comes from the Mediation Event and Negotiators
-        Database (MEND) V1:  Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
+        Database (MEND) V1: Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
         Houghton, Kasia, 2025, "Mediation Event and Negotiators Database
-        (MEND)", <a href="https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/PYRHS6" class="svelte-1qhwf62">doi.org/10.7910/DVN/PYRHS6</a>, Harvard Dataverse, V1</li> <li class="svelte-1qhwf62">data on peace agreements comes from the PA-X Database Version 9:  Bell,
+        (MEND)", <a href="https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/PYRHS6" class="svelte-1qhwf62">doi.org/10.7910/DVN/PYRHS6</a>, Harvard Dataverse, V1</li> <li class="svelte-1qhwf62">data on peace agreements comes from the PA-X Database Version 9: Bell,
         C., & Badanjak, S. (2019). Introducing PA-X: A new peace agreement
         database and dataset. Journal of Peace Research, 56(3), 452-466.
         Available at <a href="https://pax.peaceagreements.org/" class="svelte-1qhwf62">pax.peaceagreements.org</a></li> <li class="svelte-1qhwf62">data on fatalities comes from the: UCDP Georeferenced Event Dataset
