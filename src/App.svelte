@@ -350,26 +350,6 @@
     d3.select(y_axis_grp).call(yAxis);
   }
 
-  // let filtered_geo = [];
-  // // Extract all unique sorted dates (using YYYYMM for sorting)
-  // let dates = [];
-  // let selectedDateIndex = 0;
-
-  // $: if (sortedByDate) {
-  //   const dateSet = new Set(
-  //     sortedByDate.map((d) => d.YYYYMM).filter((ym) => ym && ym.length > 4), // remove undefined/null and short YYYYMM
-  //   );
-  //   dates = Array.from(dateSet).sort(); // sorted array of unique dates
-  //   selectedDateIndex = dates.length - 1; // default to latest
-  //   updateFilteredGeo();
-  // }
-
-  // function updateFilteredGeo() {
-  //   const selectedDate = dates[selectedDateIndex];
-  //   filtered_geo = sortedByDate.filter((d) => d.YYYYMM === selectedDate);
-  //   console.log(filtered_geo);
-  // }
-
   // Data state
   let dates = [];
   let selectedDateIndex = 0;
@@ -444,15 +424,15 @@
     <ol>
       <li>
         <strong>Distant Mediation Fosters Agreements</strong>: The study finds
-        blaaaaaaaa that the further a mediation event is from a conflict area,
-        the higher the likelihood of a formal peace agreement being signed. This
-        suggests that a greater geographical distance can confer perceived
-        neutrality, reduce immediate local political pressures, and allow
-        parties to negotiate without the intense emotional and security concerns
-        that often plague discussions held closer to the conflict. The data
-        indicates that for every additional “far away” mediation event, the odds
-        of a peace agreement being signed increase by approximately 14.2%. This
-        underscores the strategic value of neutral ground when aiming for formal
+        that the further a mediation event is from a conflict area, the higher
+        the likelihood of a formal peace agreement being signed. This suggests
+        that a greater geographical distance can confer perceived neutrality,
+        reduce immediate local political pressures, and allow parties to
+        negotiate without the intense emotional and security concerns that often
+        plague discussions held closer to the conflict. The data indicates that
+        for every additional “far away” mediation event, the odds of a peace
+        agreement being signed increase by approximately 14.2%. This underscores
+        the strategic value of neutral ground when aiming for formal
         settlements.
       </li>
     </ol>
@@ -517,7 +497,7 @@
     <div id="map" bind:this={mapContainer}></div>
   </div>
   <div id="legend">
-    <svg width="200px" height="70px">
+    <svg width="400px" height="75px">
       <text x="0" y="10" fill="white" font-size="10"
         >Number of Peace Agreements</text
       >
@@ -592,6 +572,44 @@
         font-size="10"
         alignment-baseline="middle">20</text
       >
+
+      <text x="200" y="10" fill="white" font-size="10"
+        >Distance from conflict</text
+      >
+      <line
+        x1="250"
+        y1="40"
+        x2="300"
+        y2="40"
+        stroke="white"
+        stroke-dasharray="4,2"
+      />
+      <text x="305" y="43" fill="white" font-size="10">1,500km</text>
+      <circle
+        cx="250"
+        cy="50"
+        r="25"
+        fill="steelblue"
+        fill-opacity="0.2"
+        stroke="none"
+      />
+      <line
+        x1="250"
+        y1="25"
+        x2="300"
+        y2="25"
+        stroke="white"
+        stroke-dasharray="4,2"
+      />
+      <text x="305" y="28" fill="white" font-size="10">5,000km</text>
+      <circle
+        cx="250"
+        cy="50"
+        r="10"
+        fill="steelblue"
+        fill-opacity="0.2"
+        stroke="none"
+      />
     </svg>
   </div>
 
@@ -708,7 +726,7 @@
     <ul>
       <li>
         data on mediation events comes from the Mediation Event and Negotiators
-        Database (MEND) V1:  Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
+        Database (MEND) V1: Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
         Houghton, Kasia, 2025, "Mediation Event and Negotiators Database
         (MEND)", <a
           href="https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/PYRHS6"
@@ -716,7 +734,7 @@
         >, Harvard Dataverse, V1
       </li>
       <li>
-        data on peace agreements comes from the PA-X Database Version 9:  Bell,
+        data on peace agreements comes from the PA-X Database Version 9: Bell,
         C., & Badanjak, S. (2019). Introducing PA-X: A new peace agreement
         database and dataset. Journal of Peace Research, 56(3), 452-466.
         Available at <a href="https://pax.peaceagreements.org/"
@@ -733,7 +751,9 @@
   </div>
 
   <h2 style="font-size: 16px;">
-    Web & Visualization: <a href="https://tomasvancisin.co.uk/">Tomas Vancisin</a>
+    Web & Visualization: <a href="https://tomasvancisin.co.uk/"
+      >Tomas Vancisin</a
+    >
   </h2>
   <!-- <div id="chart">
     <svg {width} {height}>
