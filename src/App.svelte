@@ -375,7 +375,7 @@
   let x_axis_grp1;
   let y_axis_grp;
   let y_axis_grp1;
-  $: if (x_axis_grp && y_axis_grp) {
+  $: if (x_axis_grp1 && y_axis_grp1) {
     let xAxis = d3.axisBottom(x_scale);
     d3.select(x_axis_grp).call(xAxis);
     let xAxis1 = d3.axisBottom(x_scale);
@@ -431,6 +431,8 @@
   //     clearInterval(interval);
   //   }
   // }
+
+  let activeChart = "overall"; // or 'monthly'
 </script>
 
 <main>
@@ -673,89 +675,168 @@
       </li>
     </ol>
   </div>
-  <div id="chart01">
-    <h2>Overall fatalities-distance correlation</h2>
-    <svg {width} {height}>
-      <g bind:this={x_axis_grp1} transform={`translate(0, ${height - 40})`} />
-      <g bind:this={y_axis_grp1} transform={`translate(75, 0)`} />
-      <text x={width / 2 - 75} y={height} fill="white" font-size="14px"
-        >Distance from Conflict</text
-      >
-      <text
-        x={20}
-        y={height / 2}
-        fill="white"
-        font-size="14px"
-        transform={`rotate(-90, 20, ${height / 2})`}
-      >
-        Number of Fatalities
-      </text>
-      {#if cleaned_geo_1}
-        {#each cleaned_geo_1 as g}
-          <circle
-            cx={x_scale(g.distance)}
-            cy={y_scale1(g.deaths)}
-            r="3"
-            fill="steelblue"
-            fill-opacity="0.4"
-            stroke="none"
-          >
-          </circle>
-        {/each}
-      {/if}
-    </svg>
+
+  <div class="chart-toggle-buttons">
+    <button
+      id="all"
+      on:click={() => (activeChart = "overall")}
+      class:active={activeChart === "overall"}
+    >
+      Overall Correlation
+    </button>
+    <button
+      id="month"
+      on:click={() => (activeChart = "monthly")}
+      class:active={activeChart === "monthly"}
+    >
+      Monthly Correlation
+    </button>
   </div>
-  <div id="slider">
-    <br />
-    <br />
-    <h2 style="margin-top: 50px;">Monthly changes in distance-fatalities correlation</h2>
-    <p style="font-size: 12px;">Toggle to see changes over time</p>
-    <!-- <button on:click={togglePlay}>
+
+  {#if activeChart === "overall"}
+    <div id="chart01" bind:clientWidth={width} bind:clientHeight={height}>
+      <h2>Overall fatalities-distance correlation</h2>
+      <svg {width} {height}>
+        <g bind:this={x_axis_grp1} transform={`translate(0, ${height - 40})`} />
+        <g bind:this={y_axis_grp1} transform={`translate(75, 0)`} />
+        <text x={width / 2 - 75} y={height} fill="white" font-size="14px"
+          >Distance from Conflict</text
+        >
+        <text
+          x={20}
+          y={height / 2}
+          fill="white"
+          font-size="14px"
+          transform={`rotate(-90, 20, ${height / 2})`}
+        >
+          Number of Fatalities
+        </text>
+
+        <!-- Dashed lines -->
+        <line
+          x1={x_scale(1500000)}
+          x2={x_scale(1500000)}
+          y1={20}
+          y2={height - 40}
+          stroke="gray"
+          stroke-dasharray="4,2"
+          stroke-width="1"
+        />
+        <text x={x_scale(1500000) + 5} y={25} fill="white" font-size="10">
+          1,500km
+        </text>
+
+        <line
+          x1={x_scale(5000000)}
+          x2={x_scale(5000000)}
+          y1={20}
+          y2={height - 40}
+          stroke="gray"
+          stroke-dasharray="4,2"
+          stroke-width="1"
+        />
+        <text x={x_scale(5000000) + 5} y={25} fill="white" font-size="10">
+          5,000km
+        </text>
+
+        {#if cleaned_geo_1}
+          {#each cleaned_geo_1 as g}
+            <circle
+              cx={x_scale(g.distance)}
+              cy={y_scale1(g.deaths)}
+              r="3"
+              fill="steelblue"
+              fill-opacity="0.4"
+              stroke="none"
+            >
+            </circle>
+          {/each}
+        {/if}
+      </svg>
+    </div>
+  {/if}
+
+  {#if activeChart === "monthly"}
+    <div id="slider">
+      <h2>Monthly changes in distance-fatalities correlation</h2>
+      <p style="font-size: 12px;">Toggle to see changes over time</p>
+      <!-- <button on:click={togglePlay}>
       {playing ? "Pause" : "Play"}
     </button> -->
-    {#if dates.length > 0}
-      <RangeSlider
-        min={0}
-        max={dates.length - 1}
-        step={1}
-        values={[selectedDateIndex]}
-        on:change={(e, i) => {
-          selectedDateIndex = e.detail.values[0];
-          updateFilteredGeo();
-        }}
-        formatter={formatLabel}
-        pips
-        first="label"
-        last="label"
-        float
-      />
-    {/if}
-  </div>
-
-  <div id="chart1" bind:clientWidth={width} bind:clientHeight={height}>
-    <svg {width} {height}>
-      <g bind:this={x_axis_grp} transform={`translate(0, ${height - 40})`} />
-      <g bind:this={y_axis_grp} transform={`translate(75, 0)`} />
-      <text x={width / 2 - 75} y={height} fill="white" font-size="14px"
-        >Distance from Conflict</text
-      >
-      <text
-        x={20}
-        y={height / 2}
-        fill="white"
-        font-size="14px"
-        transform={`rotate(-90, 20, ${height / 2})`}
-      >
-        Number of Fatalities
-      </text>
-
-      {#if filtered_geo}
-        {#each filtered_geo as g}
-          <CirclePoint x={x_scale(g.distance)} y={y_scale(g.deaths)} r={4} />
-        {/each}
+      {#if dates.length > 0}
+        <RangeSlider
+          min={0}
+          max={dates.length - 1}
+          step={1}
+          values={[selectedDateIndex]}
+          on:change={(e, i) => {
+            selectedDateIndex = e.detail.values[0];
+            updateFilteredGeo();
+          }}
+          formatter={formatLabel}
+          pips
+          float
+        />
       {/if}
-    </svg>
-  </div>
+      <div class="year-labels">
+        {#each [2018, 2019, 2020, 2021, 2022, 2023, 2024] as year}
+          <span>{year}</span>
+        {/each}
+      </div>
+    </div>
+    <br />
+    <div id="chart1" bind:clientWidth={width} bind:clientHeight={height}>
+      <svg {width} {height}>
+        <g bind:this={x_axis_grp} transform={`translate(0, ${height - 40})`} />
+        <g bind:this={y_axis_grp} transform={`translate(75, 0)`} />
+        <text x={width / 2 - 75} y={height} fill="white" font-size="14px"
+          >Distance from Conflict</text
+        >
+        <text
+          x={20}
+          y={height / 2}
+          fill="white"
+          font-size="14px"
+          transform={`rotate(-90, 20, ${height / 2})`}
+        >
+          Number of Fatalities
+        </text>
+        <!-- Dashed lines -->
+        <line
+          x1={x_scale(1500000)}
+          x2={x_scale(1500000)}
+          y1={20}
+          y2={height - 40}
+          stroke="gray"
+          stroke-dasharray="4,2"
+          stroke-width="1"
+        />
+        <text x={x_scale(1500000) + 5} y={25} fill="white" font-size="10">
+          1,500km
+        </text>
+
+        <line
+          x1={x_scale(5000000)}
+          x2={x_scale(5000000)}
+          y1={20}
+          y2={height - 40}
+          stroke="gray"
+          stroke-dasharray="4,2"
+          stroke-width="1"
+        />
+        <text x={x_scale(5000000) + 5} y={25} fill="white" font-size="10">
+          5,000km
+        </text>
+
+        {#if filtered_geo}
+          {#each filtered_geo as g}
+            <CirclePoint x={x_scale(g.distance)} y={y_scale(g.deaths)} r={4} />
+          {/each}
+        {/if}
+      </svg>
+    </div>
+  {/if}
+
   <div class="blog_text">
     <h2>Implications for Peacemakers</h2>
     <p>
@@ -990,7 +1071,8 @@
     margin: auto;
   }
 
-  #slider {
+  #slider,
+  .chart-toggle-buttons {
     width: 80%;
     margin: auto;
     text-align: center;
@@ -1003,5 +1085,43 @@
   .selected {
     background-color: steelblue;
     color: white;
+  }
+
+  .chart-toggle-buttons {
+    margin-bottom: 1em;
+  }
+
+  .chart-toggle-buttons button {
+    background-color: #001c23;
+    border: solid 1px rgb(99, 99, 99);
+    color: white;
+    padding: 4px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .chart-toggle-buttons button:hover {
+    background-color: steelblue;
+  }
+
+  .chart-toggle-buttons button.active {
+    background-color: steelblue;
+  }
+
+  .year-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+  }
+
+  :global(.rsPips) {
+    margin-bottom: 10px !important;
   }
 </style>
