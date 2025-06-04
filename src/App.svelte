@@ -376,14 +376,17 @@
   let y_axis_grp;
   let y_axis_grp1;
   $: if (x_axis_grp1 && y_axis_grp1) {
-    let xAxis = d3.axisBottom(x_scale);
-    d3.select(x_axis_grp).call(xAxis);
     let xAxis1 = d3.axisBottom(x_scale);
     d3.select(x_axis_grp1).call(xAxis1);
-    let yAxis = d3.axisLeft(y_scale);
-    d3.select(y_axis_grp).call(yAxis);
     let yAxis1 = d3.axisLeft(y_scale1);
     d3.select(y_axis_grp1).call(yAxis1);
+  }
+
+  $: if (x_axis_grp && y_axis_grp) {
+    let xAxis = d3.axisBottom(x_scale);
+    d3.select(x_axis_grp).call(xAxis);
+    let yAxis = d3.axisLeft(y_scale);
+    d3.select(y_axis_grp).call(yAxis);
   }
 
   // Data state
