@@ -41,10 +41,39 @@
   let path = ["./elisa_map.csv", "./final_month.csv"];
   let conflict_groups;
   let cleaned_geo;
+  let cleaned_geo_1;
   let sortedByDate = [];
   getCSV(path).then((data) => {
     geo = data[0];
     conflict_groups = d3.groups(geo, (d) => d.conflict_country);
+
+    cleaned_geo_1 = geo
+      .map((d) => {
+        // Reject rows where any relevant field is "NA"
+        if (
+          d.dist_mediation_conflict === "NA" ||
+          d.fatalities_best === "NA" ||
+          d.latitude_con === "NA" ||
+          d.longitude_con === "NA" ||
+          d.iso3c === "NA"
+        ) {
+          return null;
+        }
+
+        const distance = +d.dist_mediation_conflict;
+        const deaths = +d.fatalities_best;
+
+        if (!isFinite(distance) || distance <= 0) {
+          return null;
+        }
+
+        return {
+          ...d,
+          distance,
+          deaths: isFinite(deaths) ? deaths : 0,
+        };
+      })
+      .filter(Boolean);
 
     scatter = data[1];
     const idMap = new Map();
@@ -125,7 +154,6 @@
       if (conflict_groups[0][1] && geo_data) {
         const lines = construct_line(conflict_groups[0][1]);
         const points = construct_points(conflict_groups[0][1]);
-        console.log(geo_data);
 
         map.addSource("countries", {
           type: "geojson",
@@ -337,10 +365,16 @@
     .domain([0, 12000])
     .range([height - 50, 10]);
 
+  $: y_scale1 = d3
+    .scaleLinear()
+    .domain([0, 25000])
+    .range([height - 50, 10]);
+
   // axes for scatterplot
   let x_axis_grp;
   let x_axis_grp1;
   let y_axis_grp;
+  let y_axis_grp1;
   $: if (x_axis_grp && y_axis_grp) {
     let xAxis = d3.axisBottom(x_scale);
     d3.select(x_axis_grp).call(xAxis);
@@ -348,6 +382,8 @@
     d3.select(x_axis_grp1).call(xAxis1);
     let yAxis = d3.axisLeft(y_scale);
     d3.select(y_axis_grp).call(yAxis);
+    let yAxis1 = d3.axisLeft(y_scale1);
+    d3.select(y_axis_grp1).call(yAxis1);
   }
 
   // Data state
@@ -361,7 +397,7 @@
       sortedByDate.map((d) => d.YYYYMM).filter((ym) => ym && ym.length > 4),
     );
     dates = Array.from(dateSet).sort();
-    selectedDateIndex = dates.length - 1;
+    // selectedDateIndex = dates.length - 1;
     updateFilteredGeo();
   }
 
@@ -371,22 +407,30 @@
     console.log("Filtered data:", filtered_geo);
   }
 
-  function formatDate(yyyymm) {
-    console.log("here");
-
-    const year = yyyymm.slice(0, 4);
-    const month = yyyymm.slice(4);
-
-    console.log(year, month);
-
-    return `${month}-${year}`;
+  function formatLabel(index) {
+    const yyyymm = dates[index];
+    if (!yyyymm) return "";
+    return `${yyyymm.slice(4)}-${yyyymm.slice(0, 4)}`; // MM-YYYY
   }
 
-  let pipLabels = [];
-  $: if (dates.length > 0) {
-    pipLabels = dates.map(formatDate);
-    console.log(pipLabels);
-  }
+  // let playing = false;
+  // let interval;
+  // function togglePlay() {
+  //   playing = !playing;
+  //   if (playing) {
+  //     interval = setInterval(() => {
+  //       if (selectedDateIndex < dates.length - 1) {
+  //         selectedDateIndex += 1;
+  //         updateFilteredGeo();
+  //       } else {
+  //         clearInterval(interval);
+  //         playing = false;
+  //       }
+  //     }, 500); // Change speed (ms) here
+  //   } else {
+  //     clearInterval(interval);
+  //   }
+  // }
 </script>
 
 <main>
@@ -629,16 +673,47 @@
       </li>
     </ol>
   </div>
-  <!-- <input
-    type="range"
-    min="0"
-    max={dates.length - 1}
-    bind:value={selectedDateIndex}
-    on:input={updateFilteredGeo}
-  />
-  <p style="color:white;">Date: {dates[selectedDateIndex]}</p> -->
+  <div id="chart01">
+    <h2>Overall fatalities-distance correlation</h2>
+    <svg {width} {height}>
+      <g bind:this={x_axis_grp1} transform={`translate(0, ${height - 40})`} />
+      <g bind:this={y_axis_grp1} transform={`translate(75, 0)`} />
+      <text x={width / 2 - 75} y={height} fill="white" font-size="14px"
+        >Distance from Conflict</text
+      >
+      <text
+        x={20}
+        y={height / 2}
+        fill="white"
+        font-size="14px"
+        transform={`rotate(-90, 20, ${height / 2})`}
+      >
+        Number of Fatalities
+      </text>
+      {#if cleaned_geo_1}
+        {#each cleaned_geo_1 as g}
+          <circle
+            cx={x_scale(g.distance)}
+            cy={y_scale1(g.deaths)}
+            r="3"
+            fill="steelblue"
+            fill-opacity="0.4"
+            stroke="none"
+          >
+          </circle>
+        {/each}
+      {/if}
+    </svg>
+  </div>
   <div id="slider">
-    {#if dates.length > 0 && pipLabels.length > 0}
+    <br />
+    <br />
+    <h2 style="margin-top: 50px;">Monthly changes in distance-fatalities correlation</h2>
+    <p style="font-size: 12px;">Toggle to see changes over time</p>
+    <!-- <button on:click={togglePlay}>
+      {playing ? "Pause" : "Play"}
+    </button> -->
+    {#if dates.length > 0}
       <RangeSlider
         min={0}
         max={dates.length - 1}
@@ -648,11 +723,12 @@
           selectedDateIndex = e.detail.values[0];
           updateFilteredGeo();
         }}
+        formatter={formatLabel}
         pips
+        first="label"
+        last="label"
+        float
       />
-      <p style="color: white; padding-left: 10px">
-        Selected Month: {pipLabels[selectedDateIndex]}
-      </p>
     {/if}
   </div>
 
@@ -660,7 +736,7 @@
     <svg {width} {height}>
       <g bind:this={x_axis_grp} transform={`translate(0, ${height - 40})`} />
       <g bind:this={y_axis_grp} transform={`translate(75, 0)`} />
-      <text x={width / 2} y={height} fill="white" font-size="14px"
+      <text x={width / 2 - 75} y={height} fill="white" font-size="14px"
         >Distance from Conflict</text
       >
       <text
@@ -675,7 +751,7 @@
 
       {#if filtered_geo}
         {#each filtered_geo as g}
-          <CirclePoint x={x_scale(g.distance)} y={y_scale(g.deaths)} r={5} />
+          <CirclePoint x={x_scale(g.distance)} y={y_scale(g.deaths)} r={4} />
         {/each}
       {/if}
     </svg>
@@ -907,6 +983,7 @@
   }
 
   #map,
+  #chart01,
   #chart1 {
     width: 80%;
     height: 80vh;
@@ -916,6 +993,7 @@
   #slider {
     width: 80%;
     margin: auto;
+    text-align: center;
   }
 
   a {

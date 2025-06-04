@@ -6,10 +6,9 @@
 
     export let x;
     export let y;
-    export let r = 5;
-    export let fill = "white";
+    export let r = 3;
+    export let fill = "steelblue";
     export let fillOpacity = 0.5;
-    export let stroke = "black";
 
     const duration = 500;
 
@@ -27,4 +26,4 @@
     $: cy.set(y);
 </script>
 
-<circle cx={$cx} cy={$cy} {r} {fill} fill-opacity={fillOpacity} {stroke} />
+<circle cx={$cx} cy={$cy} {r} {fill} fill-opacity={fillOpacity}  />
