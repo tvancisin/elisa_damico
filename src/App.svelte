@@ -883,7 +883,7 @@
       ability to resolve conflicts and mitigate human suffering.
     </p>
     <h2>Sources</h2>
-    <ul>
+    <ul style="font-size: 10px;">
       <li>
         data on mediation events comes from the Mediation Event and Negotiators
         Database (MEND) V1: Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
