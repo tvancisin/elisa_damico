@@ -2711,7 +2711,7 @@ ${c.vertexSource}`,this.forceManualRenderingForInstanceIDShaders&&(D=D.replaceAl
       geographical dynamics of mediation is no longer a peripheral concern—it is
       central to building effective and sustainable peace. By strategically
       considering where we mediate, we can significantly enhance our collective
-      ability to resolve conflicts and mitigate human suffering.</p> <h2 class="svelte-1nltsv3">Sources</h2> <ul><li class="svelte-1nltsv3">data on mediation events comes from the Mediation Event and Negotiators
+      ability to resolve conflicts and mitigate human suffering.</p> <h2 class="svelte-1nltsv3">Sources</h2> <ul style="font-size: 10px;"><li class="svelte-1nltsv3">data on mediation events comes from the Mediation Event and Negotiators
         Database (MEND) V1: Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
         Houghton, Kasia, 2025, "Mediation Event and Negotiators Database
         (MEND)", <a href="https://dataverse.harvard.edu/citation?persistentId=doi:10.7910/DVN/PYRHS6" class="svelte-1nltsv3">doi.org/10.7910/DVN/PYRHS6</a>, Harvard Dataverse, V1</li> <li class="svelte-1nltsv3">data on peace agreements comes from the PA-X Database Version 9: Bell,
