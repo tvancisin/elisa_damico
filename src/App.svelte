@@ -883,9 +883,9 @@
       ability to resolve conflicts and mitigate human suffering.
     </p>
     <h2>Sources</h2>
-    <ul style="font-size: 10px;">
+    <ul style="font-size: 11px;">
       <li>
-        data on mediation events comes from the Mediation Event and Negotiators
+        Data on mediation events comes from the Mediation Event and Negotiators
         Database (MEND) V1: Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
         Houghton, Kasia, 2025, "Mediation Event and Negotiators Database
         (MEND)", <a
@@ -894,7 +894,7 @@
         >, Harvard Dataverse, V1
       </li>
       <li>
-        data on peace agreements comes from the PA-X Database Version 9: Bell,
+        Data on peace agreements comes from the PA-X Database Version 9: Bell,
         C., & Badanjak, S. (2019). Introducing PA-X: A new peace agreement
         database and dataset. Journal of Peace Research, 56(3), 452-466.
         Available at <a href="https://pax.peaceagreements.org/"
@@ -902,7 +902,7 @@
         >
       </li>
       <li>
-        data on fatalities comes from the: UCDP Georeferenced Event Dataset
+        Data on fatalities comes from the: UCDP Georeferenced Event Dataset
         (GED) Global version 24.1  Davies, Shawn, Garoun Engström, Therese
         Pettersson & Magnus Öberg (2024). Organized violence 1989-2023, and the
         prevalence of organized crime groups. Journal of Peace Research 61(4).
