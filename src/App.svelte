@@ -447,7 +447,12 @@
   </h2>
   <div class="blog_text">
 <p>
-      In a world grappling with numerous ongoing conflicts—from the protracted crisis in <strong>Sudan</strong> to the complex regional dynamics in <strong>Ukraine</strong> and the enduring tensions in the <strong>Middle East</strong>—the pursuit of peace remains a global focus. While headlines often focus on the immediate triggers and devastating impacts of these conflicts, a less visible but equally vital aspect of peacemaking is the process of mediation itself. Until recently, we haven’t been able to answer basic questions about the logistics of conflict mediation and how they shape outcomes, largely due to a lack of systematic data. As a result, factors like where mediation takes place have remained understudied. With <a
+      In a world grappling with numerous ongoing conflicts—from the protracted crisis in <strong>Sudan</strong> to the
+       complex regional dynamics in <strong>Ukraine</strong> and the enduring tensions in the <strong>Middle East</strong>—the 
+       pursuit of peace remains a global focus. While headlines often focus on the immediate triggers and devastating impacts 
+       of these conflicts, a less visible but equally important aspect of peacemaking is the process of mediation itself. Until recently, 
+       we haven’t been able to answer basic questions about the logistics of conflict mediation and how they shape outcomes, largely due 
+       to a lack of systematic data. As a result, factors like where mediation takes place have remained understudied. With <a
         href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/PYRHS6"
         target="_blank">new data</a
       > now available, researchers are beginning to examine these overlooked dimensions,
