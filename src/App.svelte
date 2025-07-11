@@ -445,14 +445,26 @@
   <h2 style="font-size: 22px;">
     <a href="https://www.elisadamico.net/" target="_blank">Elisa D'Amico</a>
   </h2>
+
+  <h2 style="font-size: 18px; margin-top: 10px;">
+    Web & Visualizations: <a href="https://tomasvancisin.co.uk/"
+      >Tomas Vancisin</a
+    >
+  </h2>
   <div class="blog_text">
-<p>
-      In a world grappling with numerous ongoing conflicts—from the protracted crisis in <strong>Sudan</strong> to the
-       complex regional dynamics in <strong>Ukraine</strong> and the enduring tensions in the <strong>Middle East</strong>—the 
-       pursuit of peace remains a global focus. While headlines often focus on the immediate triggers and devastating impacts 
-       of these conflicts, a less visible but equally important aspect of peacemaking is the process of mediation itself. Until recently, 
-       we haven’t been able to answer basic questions about the logistics of conflict mediation and how they shape outcomes, largely due 
-       to a lack of systematic data. As a result, factors like where mediation takes place have remained understudied. With <a
+    <p>
+      In a world grappling with numerous ongoing conflicts—from the protracted
+      crisis in <strong>Sudan</strong> to the complex regional dynamics in
+      <strong>Ukraine</strong>
+      and the enduring tensions in the <strong>Middle East</strong>—the pursuit
+      of peace remains a global focus. While headlines often focus on the
+      immediate triggers and devastating impacts of these conflicts, a less
+      visible but equally important aspect of peacemaking is the process of
+      mediation itself. Until recently, we haven’t been able to answer basic
+      questions about the logistics of conflict mediation and how they shape
+      outcomes, largely due to a lack of systematic data. As a result, factors
+      like where mediation takes place have remained understudied. With
+      <a
         href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/PYRHS6"
         target="_blank">new data</a
       > now available, researchers are beginning to examine these overlooked dimensions,
@@ -884,9 +896,9 @@
       considering where we mediate, we can significantly enhance our collective
       ability to resolve conflicts and mitigate human suffering.
     </p>
-<h2 style="font-size: 16px; margin-top: 60px;"> Data Sources</h2>
+    <h2 style="font-size: 16px; margin-top: 60px;">Data Sources</h2>
 
-<ul style="font-size: 11px;">
+    <ul style="font-size: 11px;">
       <li>
         Data on mediation events comes from the Mediation Event and Negotiators
         Database (MEND) V1: Peter, Mateja; Badanjak, Sanja; D'Amico, Elisa;
@@ -904,18 +916,16 @@
           >pax.peaceagreements.org</a
         >
       </li>
-   <li>
-    Data on fatalities comes from the: <a href="https://ucdp.uu.se/downloads/index.html#ged_global/">UCDP Georeferenced Event 
-      Dataset (GED) Global</a>  version 24.1: Davies, Shawn, Garoun Engström, Therese Pettersson & Magnus Öberg (2024). 
-      Organized violence 1989-2023, and the prevalence of organized crime groups. Journal of Peace Research 61(4).
-</li>
+      <li>
+        Data on fatalities comes from the: <a
+          href="https://ucdp.uu.se/downloads/index.html#ged_global/"
+          >UCDP Georeferenced Event Dataset (GED) Global</a
+        > version 24.1: Davies, Shawn, Garoun Engström, Therese Pettersson & Magnus
+        Öberg (2024). Organized violence 1989-2023, and the prevalence of organized
+        crime groups. Journal of Peace Research 61(4).
+      </li>
 
-<h3 style="font-size: 14px; margin-top: 30px;">
-    Web & Visualization: <a href="https://tomasvancisin.co.uk/"
-      >Tomas Vancisin</a
-    >
-  </h3>
-  <!-- <div id="chart">
+      <!-- <div id="chart">
     <svg {width} {height}>
       <g bind:this={x_axis_grp1} transform={`translate(0, ${height - 40})`} />
       <text x={width / 2} y={height} fill="white" font-size="14px"
@@ -950,6 +960,8 @@
       {/each}
     </svg>
   </div> -->
+    </ul>
+  </div>
 </main>
 
 <style>
@@ -1043,11 +1055,10 @@
     padding: 5px;
   }
 
-  
   .blog_text {
-  width: 65%;
-  margin: 50px auto;
-  text-align: justify; 
+    width: 65%;
+    margin: 50px auto;
+    text-align: justify;
   }
 
   @media (max-width: 768px) {
